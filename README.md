@@ -5,7 +5,22 @@ load a file that exposes a Ruby object. As long as the imported file
 doesn't pollute the VM's constants table (ie: defines a constant),
 the caller won't see any unwanted objects.
 
-## Installation
+## RATIONALE
+
+`require`-ing/`load`-ing a file in Ruby works by assigning constructs
+(classes, modules, functions, etc.) to constants, so that they could be
+reused in other parts of your app.
+
+The problem is: a library that you don't own can use any name for any
+of its construct that could potentially collide with your own app's
+construct names. Naming is hard and, namespacing will modules doesnt
+even work (colliding modules, crazy meta-programming, etc.).
+
+With `rb_import`, simply return a Ruby object from your files and
+`import` them only in classes that will need those objects.
+
+
+## INSTALLATION
 
 Add this line to your application's Gemfile:
 
