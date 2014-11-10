@@ -1,4 +1,4 @@
-# rb_import
+# rb_import [![Build Status](https://travis-ci.org/franckverrot/rb_import.svg?branch=master)](https://travis-ci.org/franckverrot/rb_import)
 
 `rb_import` adds an `import` method to your Ruby VM that lets you
 load a file that exposes a Ruby object. As long as the imported file
