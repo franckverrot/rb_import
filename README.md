@@ -13,8 +13,8 @@ reused in other parts of your app.
 
 The problem is: a library that you don't own can use any name for any
 of its construct that could potentially collide with your own app's
-construct names. Naming is hard and, namespacing will modules doesnt
-even work (colliding modules, crazy meta-programming, etc.).
+construct names. Naming is hard and, namespacing with modules doesn't
+even work (colliding module names, crazy meta-programming, etc.).
 
 With `rb_import`, simply return a Ruby object from your files and
 `import` them only in classes that will need those objects.
