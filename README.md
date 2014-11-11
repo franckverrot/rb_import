@@ -20,6 +20,20 @@ With `rb_import`, simply return a Ruby object from your files and
 `import` them only in classes that will need those objects.
 
 
+## HOW TO VERIFY THE AUTHENTICITY OF THIS GEM
+
+`rb_import` is cryptographically signed. Please make sure the gem you install hasn’t been tampered with.
+
+Add my public key (if you haven’t already) as a trusted certificate:
+
+    gem cert --add <(curl -Ls https://raw.githubusercontent.com/franckverrot/rb_import/master/certs/franckverrot.pem)
+
+    gem install rb_import -P MediumSecurity
+
+The MediumSecurity trust profile will verify signed gems, but allow the installation of unsigned dependencies.
+
+This is necessary because not all of `rb_import`’ dependencies are necessarily signed, so we cannot use HighSecurity.
+
 ## INSTALLATION
 
 Add this line to your application's Gemfile:

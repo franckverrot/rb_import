@@ -22,4 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake-compiler"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "minitest"
+
+  spec.cert_chain  = ['certs/franckverrot.pem']
+  spec.signing_key = File.expand_path(ENV['RUBYGEMS_CERT_PATH']) if $0 =~ /gem\z/
 end
