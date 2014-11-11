@@ -26,8 +26,6 @@ end
 def gemspec
   @gemspec ||= begin
                  file = File.expand_path('../rb_import.gemspec', __FILE__)
-                 puts file.inspect
-                 puts '**'*12
                  eval(File.read(file), binding, file)
                end
 end
