@@ -5,23 +5,21 @@ char *load_file_in_str(const char *in) {
 
   if(!f) {
     return 0;
-  } else {
-    fseek(f, 0, SEEK_END);
-    long fsize = ftell(f);
-    fseek(f, 0, SEEK_SET);
-
-    char * out = malloc(fsize + 1);
-    int res = fread(out, fsize, 1, f);
-
-    if(res <= 0) {
-      return 0;
-    } else {
-      fclose(f);
-
-      out[fsize] = 0;
-      return out;
-    }
   }
+  fseek(f, 0, SEEK_END);
+  long fsize = ftell(f);
+  fseek(f, 0, SEEK_SET);
+
+  char * out = malloc(fsize + 1);
+  int res = fread(out, fsize, 1, f);
+
+  if(res <= 0) {
+    return 0;
+  }
+  fclose(f);
+
+  out[fsize] = 0;
+  return out;
 }
 
 VALUE rb_import(VALUE self, VALUE file_name) {
