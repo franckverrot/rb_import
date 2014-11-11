@@ -13,7 +13,7 @@ class BasicTest < Minitest::Test
     begin
       import("unknown_file.rb")
     rescue LoadError => error
-      error_occured = true
+      error_occured = error
     end
 
     assert error_occured
