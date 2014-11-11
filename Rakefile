@@ -5,7 +5,6 @@ require 'bundler'
 Bundler::GemHelper.install_tasks
 
 $:<< 'lib'
-#require 'rb_import'
 
 $stdout.puts """
 rb_import Copyright (C) 2014 Franck Verrot <franck@verrot.fr>
@@ -19,8 +18,8 @@ require 'rake/testtask'
 Rake::TestTask.new do |t|
   t.libs << "test"
   t.pattern = "test/**/*_test.rb"
-  #t.verbose = true
-  #t.warning = true
+  t.verbose = true
+  t.warning = true
 end
 
 def gemspec
