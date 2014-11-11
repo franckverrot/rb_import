@@ -12,6 +12,7 @@ VALUE rb_import(VALUE self, VALUE file_name) {
     int result;
 
     VALUE obj = rb_eval_string_protect(file_content, &result);
+    free(file_content);
     if (result) {
       rb_raise(rb_eLoadError, "can't eval imported file %s", RSTRING_PTR(file_location));
     } else {
