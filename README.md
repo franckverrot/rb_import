@@ -5,6 +5,16 @@ load a file that exposes a Ruby object. As long as the imported file
 doesn't pollute the VM's constants table (ie: defines a constant),
 the caller won't see any unwanted objects.
 
+```ruby
+module Foo
+  import '/path/to/bar.rb' # this file defines a Bar class
+end
+
+Bar.new      # => NameError: uninitialized constant Bar
+Foo::Bar.new # => #<Foo::Bar:0x0000000206a390>
+```
+
+
 ## RATIONALE
 
 `require`-ing/`load`-ing a file in Ruby works by assigning constructs
@@ -54,6 +64,26 @@ Alternatively, you can spawn a `pry` console right away by just running:
 
 ## USAGE
 
+### Standard mode
+
+```ruby
+# foo.rb
+class Foo
+  def bar
+    "bar"
+  end
+end
+
+# bar.rb
+module SomeModule
+  Foo = import './foo.rb'
+end
+
+Foo             # => NameError: uninitialized constant Foo
+SomeModule::Foo # => SomeModule::Foo
+```
+
+### Anonymous objects
 ```ruby
 # foo.rb
 Class.new do
